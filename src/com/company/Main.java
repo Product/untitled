@@ -150,3 +150,43 @@ public static class MassMsgType {
     public static final String IMAGE = "image";
     public static final String MPVIDEO = "mpvideo";
 }
+
+
+/////////draw//////////
+window.clear(Color::White);
+        window.draw(background);
+
+        for (int i = 0; i<M; i++)
+        for (int j = 0; j<N; j++)
+        {
+        if (field[i][j] == 0) continue;
+        s.setTextureRect(IntRect(field[i][j] * 18, 0, 18, 18));
+        s.setPosition(j * 18, i * 18);
+        s.move(28, 31); //offset
+        window.draw(s);
+        }
+
+        for (int i = 0; i<4; i++)
+        {
+        s.setTextureRect(IntRect(colorNum * 18, 0, 18, 18));
+        s.setPosition(a[i].x * 18, a[i].y * 18);
+        s.move(28, 31); //offset
+        window.draw(s);
+        }
+
+// next box
+        nextBox.setTextureRect(IntRect(0, 0, 72, 108));
+        nextBox.setPosition(240, 20);
+        window.draw(nextBox);
+
+// draw next item
+        for (int i = 0; i<4; i++)
+        {
+        s.setTextureRect(IntRect(colorNum_next * 18, 0, 18, 18));
+        s.setPosition(240+18+a[i].x_next * 18, 20+18+a[i].y_next* 18);
+        //s.move(28, 31); //offset
+        window.draw(s);
+        }
+
+        window.draw(frame);
+        window.display();
